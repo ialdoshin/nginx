@@ -32,12 +32,22 @@ pipeline {
         stage('Generate File') {
             steps {
                 script {
-                    def fileContent = "Привет, это простой файл!"
+                    def serverInfo = """
+                        Hostname: ${env.HOSTNAME}
+                        OS: ${env.OS}
+                        CPU: ${env.CPU}
+                        Memory: ${env.MEMORY_SIZE}
+                    """.stripIndent()
 
                     def filePath = 'server_info.txt'
-                    writeFile file: filePath, text: fileContent, encoding: 'UTF-8'
+                    def encoding = 'UTF-8'
+
+                    writeFile file: filePath, text: serverInfo, encoding: encoding
 
                     echo "Файл $filePath успешно создан."
+
+                    // Проверка содержимого файла
+                    sh "cat $filePath"
                 }
             }
         }
