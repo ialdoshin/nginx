@@ -2,6 +2,10 @@ pipeline {
     agent any
     
     environment {
+        STEND="${params.Stend}"
+        HOST="${params.Host}" 
+        ARCHIVE="${params.Archive}"
+        CLEARLOG="${params.Clearlog}" 
         SERVER_HOSTNAME = sh(script: 'hostname', returnStdout: true).trim()
         SERVER_OS = sh(script: 'uname -s', returnStdout: true).trim()
         SERVER_CPU = sh(script: 'nproc', returnStdout: true).trim()
@@ -41,6 +45,12 @@ pipeline {
                         CPU: ${env.SERVER_CPU}
                         Memory: ${env.SERVER_MEMORY} KB
                         Current Date and Time: ${new Date()}
+
+                        Sentd: ${env.STEND}
+                        Host: ${env.HOST}
+                        Archive: ${env.ARCHIVE}
+                        Clearlog:${env.CLEARLOG}
+
                     """.stripIndent()
 
                     def filePath = 'server_info.txt'
