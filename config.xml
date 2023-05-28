@@ -14,7 +14,7 @@
 <hudson.model.ParametersDefinitionProperty>
 <parameterDefinitions>
 <hudson.model.ChoiceParameterDefinition>
-<name>Стенд</name>
+<name>Stend</name>
 <description>Выбор среды развертывания</description>
 <choices class="java.util.Arrays$ArrayList">
 <a class="string-array">
@@ -26,7 +26,19 @@
 </choices>
 </hudson.model.ChoiceParameterDefinition>
 <hudson.model.ChoiceParameterDefinition>
-<name>Номер сборки</name>
+<name>Host</name>
+<description>Выбор сервера (Ansible)</description>
+<choices class="java.util.Arrays$ArrayList">
+<a class="string-array">
+<string>all</string>
+<string>tosd-nginx-0321</string>
+<string>tosd-nginx-0310</string>
+<string>tosd-nginx-0301</string>
+</a>
+</choices>
+</hudson.model.ChoiceParameterDefinition>
+<hudson.model.ChoiceParameterDefinition>
+<name>Archive</name>
 <description>Номер сборки из Nexus</description>
 <choices class="java.util.Arrays$ArrayList">
 <a class="string-array">
@@ -38,7 +50,7 @@
 </choices>
 </hudson.model.ChoiceParameterDefinition>
 <hudson.model.BooleanParameterDefinition>
-<name>clearlog</name>
+<name>Clearlog</name>
 <defaultValue>false</defaultValue>
 </hudson.model.BooleanParameterDefinition>
 </parameterDefinitions>
