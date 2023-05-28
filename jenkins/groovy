@@ -49,7 +49,7 @@ pipeline {
                         Sentd: ${env.STEND}
                         Host: ${env.HOST}
                         Archive: ${env.ARCHIVE}
-                        Clearlog: {env.CLEARLOG}
+                        Clearlog: ${env.CLEARLOG}
 
                     """.stripIndent()
 
