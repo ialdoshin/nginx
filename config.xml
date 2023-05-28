@@ -1,0 +1,69 @@
+<flow-definition plugin="workflow-job@1301.v054d9cea_9593">
+<actions>
+<org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobAction plugin="pipeline-model-definition@2.2133.ve46a_6113dfc3"/>
+<org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction plugin="pipeline-model-definition@2.2133.ve46a_6113dfc3">
+<jobProperties/>
+<triggers/>
+<parameters/>
+<options/>
+</org.jenkinsci.plugins.pipeline.modeldefinition.actions.DeclarativeJobPropertyTrackerAction>
+</actions>
+<description>Развретывание ПО на стены разработки</description>
+<keepDependencies>false</keepDependencies>
+<properties>
+<hudson.model.ParametersDefinitionProperty>
+<parameterDefinitions>
+<hudson.model.ChoiceParameterDefinition>
+<name>Стенд</name>
+<description>Выбор среды развертывания</description>
+<choices class="java.util.Arrays$ArrayList">
+<a class="string-array">
+<string>dev</string>
+<string>ift</string>
+<string>lt</string>
+<string>prom</string>
+</a>
+</choices>
+</hudson.model.ChoiceParameterDefinition>
+<hudson.model.ChoiceParameterDefinition>
+<name>Номер сборки</name>
+<description>Номер сборки из Nexus</description>
+<choices class="java.util.Arrays$ArrayList">
+<a class="string-array">
+<string>SP-00.001.04</string>
+<string>SP-00.001.03</string>
+<string>SP-00.001.02</string>
+<string>SP-00.001.01</string>
+</a>
+</choices>
+</hudson.model.ChoiceParameterDefinition>
+<hudson.model.BooleanParameterDefinition>
+<name>clearlog</name>
+<defaultValue>false</defaultValue>
+</hudson.model.BooleanParameterDefinition>
+</parameterDefinitions>
+</hudson.model.ParametersDefinitionProperty>
+</properties>
+<definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps@3668.v1763b_b_6ccffd">
+<scm class="hudson.plugins.git.GitSCM" plugin="git@5.0.2">
+<configVersion>2</configVersion>
+<userRemoteConfigs>
+<hudson.plugins.git.UserRemoteConfig>
+<url>https://github.com/ialdoshin/nginx.git</url>
+</hudson.plugins.git.UserRemoteConfig>
+</userRemoteConfigs>
+<branches>
+<hudson.plugins.git.BranchSpec>
+<name>*/main</name>
+</hudson.plugins.git.BranchSpec>
+</branches>
+<doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+<submoduleCfg class="empty-list"/>
+<extensions/>
+</scm>
+<scriptPath>jenkins/groovy</scriptPath>
+<lightweight>true</lightweight>
+</definition>
+<triggers/>
+<disabled>false</disabled>
+</flow-definition>
