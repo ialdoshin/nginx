@@ -29,5 +29,23 @@ pipeline {
                 sh 'exit 0'
             }
         }
+        stage('Generate File') {
+            steps {
+                script {
+                    def fileContent = "Привет, это простой файл!"
+
+                    def filePath = 'server_info.txt'
+                    writeFile file: filePath, text: fileContent, encoding: 'UTF-8'
+
+                    echo "Файл $filePath успешно создан."
+                }
+            }
+        }
+    }
+    post {
+        always {
+            // Архивируйте файл результата
+            archiveArtifacts 'server_info.txt'
+        }
     }
 }
