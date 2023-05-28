@@ -26,11 +26,6 @@ pipeline {
         }
         stage('Формирование отчета'){
             steps {
-                sh 'exit 0'
-            }
-        }
-        stage('Generate File') {
-            steps {
                 script {
                     def serverInfo = """
                         Hostname: ${env.HOSTNAME}
