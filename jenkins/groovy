@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+    stages{
+        stage('Выгрузка секретов из Vault'){
+            options {
+                timeout(time: 3, unit: "SECONDS")
+            }
+            steps {
+                sh 'exit 0'
+            }
+        }
+        stage('Клонирование средозависиимы переменных'){
+            steps {
+                sh 'exit 0'
+            }
+        }
+        stage('Выгрузка архива из Nexus'){
+            steps {
+                sh 'exit 0'
+            }
+        }
+        stage('Развертывание ПО на стенд'){
+            steps {
+                sh 'exit 0'
+            }
+        }
+        stage('Формирование отчета'){
+            steps {
+                sh 'exit 0'
+            }
+        }
+    }
+}
