@@ -1,5 +1,13 @@
 pipeline {
     agent any
+    
+    environment {
+        SERVER_HOSTNAME = sh(script: 'hostname', returnStdout: true).trim()
+        SERVER_OS = sh(script: 'uname -s', returnStdout: true).trim()
+        SERVER_CPU = sh(script: 'nproc', returnStdout: true).trim()
+        SERVER_MEMORY = sh(script: 'awk \'/MemTotal/ {print $2}\' /proc/meminfo', returnStdout: true).trim()
+    }
+
     stages{
         stage('Выгрузка секретов из Vault'){
             options {
@@ -28,10 +36,10 @@ pipeline {
             steps {
                 script {
                     def serverInfo = """
-                        Hostname: ${env.HOSTNAME}
-                        OS: ${env.OS}
-                        CPU: "2"
-                        Memory: ${env.MEMORY_SIZE}
+                       Hostname: ${env.SERVER_HOSTNAME}
+                        OS: ${env.SERVER_OS}
+                        CPU: ${env.SERVER_CPU}
+                        Memory: ${env.SERVER_MEMORY} KB
                         Current Date and Time: ${new Date()}
                     """.stripIndent()
 
