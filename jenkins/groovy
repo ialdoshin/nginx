@@ -30,8 +30,9 @@ pipeline {
                     def serverInfo = """
                         Hostname: ${env.HOSTNAME}
                         OS: ${env.OS}
-                        CPU: ${env.CPU}
+                        CPU: "2"
                         Memory: ${env.MEMORY_SIZE}
+                        Current Date and Time: ${new Date()}
                     """.stripIndent()
 
                     def filePath = 'server_info.txt'
