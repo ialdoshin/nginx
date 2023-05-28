@@ -46,7 +46,7 @@ pipeline {
                         Memory: ${env.SERVER_MEMORY} KB
                         Current Date and Time: ${new Date()}
                         -----------------------------------
-                        Sentd: ${env.STEND}
+                        Stend: ${env.STEND}
                         Host: ${env.HOST}
                         Archive: ${env.ARCHIVE}
                         Clearlog: ${env.CLEARLOG}
